@@ -5,6 +5,7 @@ const loading = document.getElementById("loading");
 const contentArea = document.getElementById("contentArea");
 const cardContainer = document.getElementById("cardContainer");
 const my_modal_5 = document.getElementById("my_modal_5");
+const modalContainer = document.getElementById("modalContainer");
 
 // For toggle btn
 allFilter.addEventListener("click", function () {
@@ -108,7 +109,7 @@ const displayData = (datas) => {
                 <p class="text-[#64748B] mb-3 text-[12px] line-clamp-2">
                   ${data.description}
                 </p>
-                <div class="flex gap-1 text-[10px]">
+                <div class="flex flex-wrap gap-1 text-[10px]">
                   
                     ${createElements(data.labels)}
                 </div>
@@ -129,6 +130,40 @@ const displayModal = async (id) => {
   const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
   const res = await fetch(url);
   const data = await res.json();
-  console.log(data.data);
+  const modalData = data.data;
+  let date = new Date(modalData.createdAt);
+  let formatedDate = date.toLocaleDateString("en-US");
+  modalContainer.innerHTML = `
+    <div>
+            <h4 class="font-semibold text-[14px]">${modalData.title}</h4>
+            <div class="flex flex-wrap items-center gap-1 text-[12px] mt-2">
+              <p class="${modalData.status == "open" ? "bg-[#00A96E]" : "bg-[#A855F7]"} text-white px-2 py-0.5 rounded-full capitalize">
+                ${modalData.status}
+              </p>
+              <p>Opened by ${modalData.author}</p>
+              <p>${formatedDate}</p>
+            </div>
+            <div class="flex flex-wrap gap-1 text-[10px] mt-3">
+              ${createElements(modalData.labels)}
+            </div>
+            <p class="text-[#64748B] text-[12px] mt-3 text-justify">
+              ${modalData.description}
+            </p>
+            <div class="flex text-[12px] mt-3">
+              <div class="flex-1">
+                <p class="mb-1">Assignee:</p>
+                <p class="font-semibold">${modalData.assignee ? modalData.assignee : "Not Assigned"}</p>
+              </div>
+              <div class="flex-1">
+                <p class="mb-1">Priority:</p>
+                <p
+                  class="uppercase ${modalData.priority == "high" ? "bg-[#EF4444]" : modalData.priority == "medium" ? "bg-[#F59E0B]" : "bg-[#9CA3AF]"} text-white rounded-full px-2 py-0.5 inline"
+                >
+                  ${modalData.priority}
+                </p>
+              </div>
+            </div>
+          </div>
+  `;
   my_modal_5.showModal();
 };

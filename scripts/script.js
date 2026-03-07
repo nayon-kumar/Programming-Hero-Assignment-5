@@ -4,6 +4,7 @@ const closeFilter = document.getElementById("closeFilter");
 const loading = document.getElementById("loading");
 const contentArea = document.getElementById("contentArea");
 const cardContainer = document.getElementById("cardContainer");
+const my_modal_5 = document.getElementById("my_modal_5");
 
 // For toggle btn
 allFilter.addEventListener("click", function () {
@@ -90,7 +91,7 @@ const displayData = (datas) => {
     const div = document.createElement("div");
     div.innerHTML = `
     <div class="shadow-xl rounded-b-xl">
-              <div
+              <div onclick = "displayModal(${data.id})"
                 class="p-4 border-t-5 ${data.status == "open" ? "border-[#00A96E]" : "border-[#A855F7]"}  rounded-xl cursor-pointer"
               >
                 <div class="flex justify-between items-center">
@@ -122,4 +123,12 @@ const displayData = (datas) => {
     `;
     cardContainer.appendChild(div);
   }
+};
+
+const displayModal = async (id) => {
+  const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  console.log(data.data);
+  my_modal_5.showModal();
 };

@@ -101,6 +101,44 @@
         </div>
       </div>
     </main>
+
+    <!-- Modal -->
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box">
+        <div>
+          <h4 class="font-semibold text-[14px]">Fix broken image uploads</h4>
+          <div class="flex flex-wrap items-center gap-1 text-[12px] mt-2">
+            <p class="bg-[#00A96E] text-white px-2 rounded-full">Open</p>
+            <p>Opened by Fahim Ahmed</p>
+            <p>22/02/2026</p>
+          </div>
+          <div class="flex gap-1 text-[10px] mt-3">
+            <p
+              class="uppercase text-[#EF4444] bg-[#FECACA] rounded-full px-3 py-0.5"
+            >
+              <i class="fa-solid fa-bug"></i> Bug
+            </p>
+            <p
+              class="uppercase text-[#EF4444] bg-[#FECACA] rounded-full px-3 py-0.5"
+            >
+              <i class="fa-solid fa-bug"></i> Bug
+            </p>
+          </div>
+          <p class="text-[#64748B] text-[12px] mt-3 text-justify">
+            The navigation menu doesn't collapse properly on mobile devices.
+            Need to fix the responsive behavior.
+          </p>
+        </div>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
     <script src="scripts/script.js"></script>
   </body>
 </html>

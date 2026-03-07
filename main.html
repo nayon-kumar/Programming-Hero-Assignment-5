@@ -43,12 +43,13 @@
           </div>
           <div class="flex gap-2">
             <input
+              id="searchInput"
               type="text"
               placeholder="Search issues..."
               class="input input-bordered w-24 md:w-auto"
             />
             <div class="dropdown dropdown-end">
-              <button class="btn btn-primary">Search</button>
+              <button id="searchBtn" class="btn btn-primary">Search</button>
             </div>
           </div>
         </div>
@@ -72,7 +73,9 @@
               <img src="assets/Aperture.png" alt="" />
             </div>
             <div>
-              <h4 class="font-semibold text-[20px]">50 Issues</h4>
+              <h4 class="font-semibold text-[20px]">
+                <span id="issusCount">50</span> Issues
+              </h4>
               <p class="text-[#64748B]">Track and manage your project issues</p>
             </div>
           </div>
@@ -99,16 +102,21 @@
             <!-- Card -->
           </div>
         </div>
+        <!-- No issue area -->
+        <div id="noIssue" class="mt-10">
+          <div class="text-center">
+            <img class="mx-auto" src="assets/alert-error.png" alt="Alert" />
+            <p class="font-semibold">No Issus Found</p>
+          </div>
+        </div>
       </div>
     </main>
 
     <!-- Modal -->
-    <!-- Open the modal using ID.showModal() method -->
-    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
     <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
       <div class="modal-box">
         <div id="modalContainer">
-          <!-- Modal data show here -->
+          <!-- Modal data will show here -->
         </div>
         <div class="modal-action">
           <form method="dialog">

@@ -6,6 +6,9 @@ const contentArea = document.getElementById("contentArea");
 const cardContainer = document.getElementById("cardContainer");
 const my_modal_5 = document.getElementById("my_modal_5");
 const modalContainer = document.getElementById("modalContainer");
+const searchBtn = document.getElementById("searchBtn");
+const issusCount = document.getElementById("issusCount");
+const noIssue = document.getElementById("noIssue");
 
 // For toggle btn
 allFilter.addEventListener("click", function () {
@@ -124,6 +127,12 @@ const displayData = (datas) => {
     `;
     cardContainer.appendChild(div);
   }
+  issusCount.innerText = datas.length;
+  if (datas.length > 0) {
+    noIssue.classList.add("hidden");
+  } else {
+    noIssue.classList.remove("hidden");
+  }
 };
 
 // Display modal data
@@ -214,4 +223,26 @@ closeFilter.addEventListener("click", function () {
     displayData(newData);
   };
   openData();
+});
+
+// For search data
+searchBtn.addEventListener("click", function () {
+  const searchInput = document.getElementById("searchInput").value;
+  const searchData = async () => {
+    if (searchInput === "") {
+      return;
+    }
+
+    allFilter.classList.add("btn-primary");
+    openFilter.classList.remove("btn-primary");
+    closeFilter.classList.remove("btn-primary");
+    showLoading();
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchInput}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    hideLoading();
+    document.getElementById("searchInput").value = "";
+    displayData(data.data);
+  };
+  searchData();
 });

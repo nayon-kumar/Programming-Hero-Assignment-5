@@ -29,7 +29,7 @@
   </head>
   <body>
     <main>
-      <section class="bg-[#F8FAFC] py-15">
+      <section class="bg-[#F8FAFC] py-15 px-4">
         <div class="max-w-[520px] bg-white mx-auto p-8 rounded-xl shadow-2xl">
           <div class="text-center">
             <img class="mx-auto" src="assets/github-logo.png" alt="Logo" />
@@ -46,7 +46,7 @@
               id="userName"
               placeholder="Enter Username"
             />
-            <label class="font-medium mb-2" for="password">Password</label>
+            <label class="font-medium mb-2 mt-4" for="password">Password</label>
             <input
               class="input w-full"
               type="password"
@@ -55,7 +55,9 @@
             />
           </div>
           <div class="text-center mt-6">
-            <button class="btn btn-primary w-full">Sign In</button>
+            <button id="singinBtn" class="btn btn-primary w-full">
+              Sign In
+            </button>
           </div>
           <div class="py-6">
             <fieldset class="border-t border-gray-400 text-center">
@@ -72,5 +74,20 @@
         </div>
       </section>
     </main>
+    <!-- Modal -->
+    <dialog id="my_modal_3" class="modal max-w-[520px] mx-auto">
+      <div class="modal-box">
+        <form method="dialog">
+          <button
+            class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+          >
+            ✕
+          </button>
+        </form>
+        <h3 class="text-lg font-bold text-error">Error!</h3>
+        <p class="py-4">Invalid Username or Password</p>
+      </div>
+    </dialog>
+    <script src="scripts/login.js"></script>
   </body>
 </html>

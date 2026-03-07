@@ -58,9 +58,9 @@
       <div class="w-[95%] mx-auto">
         <!-- Button area -->
         <div class="mt-[60px] border-2 p-3 border-gray-200">
-          <button class="btn btn-active btn-primary">All</button>
-          <button class="btn btn-active">Open</button>
-          <button class="btn btn-active">Closed</button>
+          <button id="allFilter" class="btn btn-active btn-primary">All</button>
+          <button id="openFilter" class="btn btn-active">Open</button>
+          <button id="closeFilter" class="btn btn-active">Closed</button>
         </div>
 
         <!-- Count area -->
@@ -82,55 +82,25 @@
           </div>
         </div>
 
+        <!-- Loading effect -->
+        <div
+          id="loading"
+          class="items-center justify-center mt-10 md:mt-15 hidden"
+        >
+          <div><span class="loading loading-spinner loading-xl"></span></div>
+        </div>
         <!-- Content area -->
-        <div class="mt-4 px-2">
+        <div id="contentArea" class="mt-4 px-2">
           <!-- Card container -->
           <div
+            id="cardContainer"
             class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
           >
             <!-- Card -->
-            <div class="shadow-xl rounded-b-xl">
-              <div
-                class="p-4 border-t-5 border-green-300 rounded-xl cursor-pointer"
-              >
-                <div class="flex justify-between items-center">
-                  <img src="assets/Open-Status.png" alt="Open" />
-                  <p
-                    class="text-[#EF4444] bg-[#FEECEC] px-5 rounded-full py-0.5 text-[12px] uppercase"
-                  >
-                    High
-                  </p>
-                </div>
-                <h3 class="font-semibold mt-3 mb-2 text-[14px]">
-                  Fix navigation menu on mobile devices
-                </h3>
-                <p class="text-[#64748B] mb-3 text-[12px]">
-                  The navigation menu doesn't collapse properly on mobile
-                  devices...
-                </p>
-                <div class="flex gap-1 text-[12px]">
-                  <p
-                    class="uppercase text-[#EF4444] bg-[#FECACA] rounded-full px-3 py-0.5"
-                  >
-                    <i class="fa-solid fa-bug"></i> Bug
-                  </p>
-                  <p
-                    class="uppercase text-[#D97706] bg-[#FDE68A] rounded-full px-3 py-0.5"
-                  >
-                    <i class="fa-solid fa-life-ring"></i> Help wanted
-                  </p>
-                </div>
-              </div>
-              <div
-                class="border-t-2 border-b-2 border-gray-200 p-4 rounded-b-xl space-y-2"
-              >
-                <p class="text-[#64748B] text-[12px]">#1by john_doe</p>
-                <p class="text-[#64748B] text-[12px]">1/15/2024</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </main>
+    <script src="scripts/script.js"></script>
   </body>
 </html>

@@ -227,9 +227,11 @@ closeFilter.addEventListener("click", function () {
 
 // For search data
 searchBtn.addEventListener("click", function () {
-  const searchInput = document.getElementById("searchInput").value;
+  const searchInput = document.getElementById("searchInput").value.trim();
+  const searchInputLower = searchInput.toLowerCase();
   const searchData = async () => {
-    if (searchInput === "") {
+    if (searchInputLower === "") {
+      document.getElementById("searchInput").value = "";
       return;
     }
 
@@ -237,7 +239,7 @@ searchBtn.addEventListener("click", function () {
     openFilter.classList.remove("btn-primary");
     closeFilter.classList.remove("btn-primary");
     showLoading();
-    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchInput}`;
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchInputLower}`;
     const res = await fetch(url);
     const data = await res.json();
     hideLoading();

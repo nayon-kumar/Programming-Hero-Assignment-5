@@ -231,6 +231,7 @@ searchBtn.addEventListener("click", function () {
   const searchInputLower = searchInput.toLowerCase();
   const searchData = async () => {
     if (searchInputLower === "") {
+      // IF user input space
       document.getElementById("searchInput").value = "";
       return;
     }
